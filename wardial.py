@@ -45,9 +45,7 @@ def enumerate_ips(start_ip, n):
     >>> list(enumerate_ips('192.168.1.0', 2))
     ['192.168.1.0', '192.168.1.1']
     >>> list(enumerate_ips('8.8.8.8', 10))
-    ['8.8.8.8', '8.8.8.9', '8.8.8.10', '8.8.8.11',
-            '8.8.8.12', '8.8.8.13', '8.8.8.14', '8.8.8.15',
-            '8.8.8.16', '8.8.8.17']
+    ['8.8.8.8', '8.8.8.9', '8.8.8.10', '8.8.8.11', '8.8.8.12', '8.8.8.13', '8.8.8.14', '8.8.8.15', '8.8.8.16', '8.8.8.17']
 
     The following tests ensure that the correct
     number of ips get returned as a generator, and not a list.
@@ -137,8 +135,7 @@ def netmask_to_ips(netmask):
     octet2 = (base_ip >> 8) % 256
     octet3 = (base_ip) % 256
 
-    start_ip = str(octet0) + '.' + str(octet1)
-    + '.' + str(octet2) + '.' + str(octet3)
+    start_ip = str(octet0) + '.' + str(octet1) + '.' + str(octet2) + '.' + str(octet3)
     num_ips = 2**(32-mask)
 
     return enumerate_ips(start_ip, num_ips)
@@ -177,8 +174,7 @@ async def _wardial_async(hosts, max_connections=500,
     >>> loop = asyncio.new_event_loop()
     >>> loop.run_until_complete(_wardial_async(['google.com']))
     [True]
-    >>> loop.run_until_complete
-    (_wardial_async(['google.com', 'bad-domain-name', 'microsoft.com']))
+    >>> loop.run_until_complete(_wardial_async(['google.com', 'bad-domain-name', 'microsoft.com']))
     [True, False, True]
     >>> loop.close()
 
@@ -231,10 +227,8 @@ def wardial(hosts, **kwargs):
     Internally, this function will use aio
     http to make concurrent connections.
 
-    >>> wardial(['facebook.com', 'google.com',
-        'github.com', 'amazon.com', 'microsoft.com', 'netflix.com'])
-    ['facebook.com', 'google.com', 'github.com',
-            'amazon.com', 'microsoft.com', 'netflix.com']
+    >>> wardial(['facebook.com', 'google.com', 'github.com', 'amazon.com', 'microsoft.com', 'netflix.com'])
+    ['facebook.com', 'google.com', 'github.com', 'amazon.com', 'microsoft.com', 'netflix.com']
 
     >>> wardial(['208.97.176.235', '23.185.0.2', '142.250.72.174'])
     ['208.97.176.235', '23.185.0.2', '142.250.72.174']
